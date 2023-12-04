@@ -26,7 +26,7 @@ class GetComments(View):
         return {
             'id': comment.id,
             'text': comment.text,
-            'parent': comment.parent,
+            'parent_id': comment.parent_id,
             'created': comment.created.isoformat(),
             'updated': comment.updated.isoformat(),
             'is_deleted': comment.is_deleted,
