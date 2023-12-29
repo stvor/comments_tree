@@ -4,7 +4,34 @@
     <link rel="stylesheet" href="/static/dist/example.css">
 </head>
 <body>
-    <h1>Hello, Stas!</h1>
-    <p>Если ты это видишь в браузере, то значит смог запустить бэкенд. Дальше надо положить сюда свой фронт</p>
+    <script type="module">
+        import { html, render } from 'https://esm.sh/htm/preact/standalone';
+
+        const fakeComments = [
+            {
+                author: 'Nick',
+                text: 'Hi everybody!',
+            },
+            {
+                author: 'Sidny',
+                text: 'Happy to be here :)',
+            },
+        ];
+
+        function Comment ({commentData}) {
+            return html`
+                <h2>${commentData.author}</h2>
+                <h3>${commentData.text}</h3>
+            `;
+        }
+
+        function App ({comments}) {
+            return comments.map((singleComment) => {
+                return html`<${Comment} commentData=${singleComment} />`;
+            });
+        }
+
+        render(html`<${App} comments=${fakeComments} />`, document.body);
+    </script>
 </body>
 </html>
